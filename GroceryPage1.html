@@ -1,0 +1,143 @@
+
+<html>
+<head>
+<script src="angular.min.js"></script>
+<h1 align=center>Big Basket</h1>
+
+<style>
+table,th,td
+{
+}
+h1
+{
+
+background:white;
+color:black;
+
+
+}
+
+</style>
+<style bg-color=blue></style>
+</head>
+
+
+
+<body  ng-app="app" ng-controller="GroceryController"
+	ng-init="Details=[ ]">
+	
+	<form>
+<p id="login" onmouseover="showForm();" onmouseout="hideForm();">     
+    <span class="label">Login Here</span>       
+    <span id="loginForm">        
+        <span class="form-elements">
+            <span class="form-label">Name:</span>
+            <span class="form-field"><input type="name" /></span>                        </span>        
+        <span class="form-elements">
+            <span class="form-label">Password:</span>
+            <span class="form-field"><input type="password" /></span>                    </span>        
+        <span class="form-elements">
+            <span class="submit-btn"><input type="submit" value="Submit" /></span>     
+        </span>
+    
+    </span>          
+</p>
+</form>
+
+<font face="Calibri" color=white><b>
+
+	<div>ALL CATEGORY:</div>
+	<br> FRUITS:
+	<select ng-model="select">
+
+		<option value="Mango">Mango</option>
+		<option value="Jackfruit">Jackfruit</option>
+		<option value="Pineapple">Pineapple</option>
+		<option value="Apple">Apple</option>
+		<option value="Strawberry">Strawberry</option>
+		<option value="Blueberry">Blueberry</option>
+		<option value="Cherry">Cherry</option>
+	</select>
+	<button ng-click="Fruits()">SHOP</button><br>
+	<br> VEGETABLES:
+	<select ng-model="select">
+
+		<option value="Tomato">Tomato</option>
+		<option value="Ladiesfinger">Ladiesfinger</option>
+		<option value="Coconut">Coconut</option>
+		<option value="Onion">Onion</option>
+		<option value="Potato">Potato</option>
+		<option value="Ginger">Ginger</option>
+		<option value="Garlic">Garlic</option>
+	</select>
+	<button ng-click="Vegetables()">SHOP</button><br>
+	<br> GROCERY:
+	<select ng-model="select">
+
+		<option value="Rice">Rice</option>
+		<option value="Dhal">Dhal</option>
+		<option value="Atta">Atta</option>
+		<option value="Ghee">Ghee</option>
+		<option value="SunflowerOil">SunflowerOil</option>
+		<option value="Suguar">Sugar</option>
+		<option value="Salt">Salt</option>
+	</select>
+	<button ng-click="Grocery()">SHOP</button><br>
+	<br>
+
+	<table border="1"  align=center title="Details">
+		<tr>
+			<th>Item Code</th>
+			<th>Item Name</th>
+			<th>Item Quantity</th>
+			<th>Item Rate</th>
+			<th>Total Price</th>
+			<th><button>add to cart</button></th>
+			
+		</tr>
+
+		<tr ng-repeat="x in Details track by $index">
+			<td>{{x.ItemCode}}</td>
+			<td>{{x.ItemName}}</td>
+			<td>{{x.ItemQuantity}}</td>
+			<td>{{x.ItemRate}}</td>
+			<td>{{x.TotalPrice}}</td>
+		</tr>
+	</table>
+	<input type="button" value=""></input>
+
+
+
+	<script>
+		var app = angular.module("app", []);
+		app
+				.controller(
+						"GroceryController",
+						function($scope) {
+							$scope.Fruits = function() {
+								if ($scope.select == "Mango") {
+									$scope.Obj = {};
+									$scope.Obj.ItemCode = $scope.ItemCode;
+									$scope.Obj.ItemName = $scope.ItemName;
+									$scope.Obj.ItemQuantity = $scope.ItemQuantity;
+									$scope.Obj.ItemRate = $scope.ItemRate;
+									$scope.obj.TotalPrice = ($scope.ItemRate * $scope.ItemQuantity);
+									$scope.Details.push($scope.Obj);
+								}
+
+								else if ($scope.select == "Jackfruit") {
+									$scope.Obj = {};
+									$scope.Obj.ItemCode = $scope.ItemCode;
+									$scope.Obj.ItemName = $scope.ItemName;
+									$scope.Obj.ItemQuantity = $scope.ItemQuantity;
+									$scope.Obj.ItemRate = $scope.ItemRate;
+									$scope.obj.TotalPrice = ($scope.ItemRate * $scope.ItemQuantity);
+									$scope.Details.push($scope.Obj);
+
+								}
+
+							}
+						});
+	</script>
+</body>
+</html>
