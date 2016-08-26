@@ -1,0 +1,43 @@
+<html>
+<head>
+
+<script src="angular.min.js"></script>
+<script src="employee.js"></script>
+<script src="edit.js"></script>
+</head>
+<style>
+h1 {
+	font-size: 50pt;
+	font-family: Arial;
+	background-color: black;
+}
+
+th {
+	color: blue;
+}
+</style>
+<body ng-app="bioApp" ng-controller="BioinformaticsController">
+	<h1 style="color: red">Ust Employee Details</h1>
+	Enter name:	<input type="text" ng-model="employee.myname"> Enter Email:
+	<input type="text" ng-model="employee.email"> Enter Phn no:
+	<input type="number" ng-model="employee.number">
+	<input type="hidden" ng-model="employee.id">
+	<button type="save" ng-click="save(employee)">Save</button>
+	<h1>You added details are below</h1>
+	<table border="1" align="center">
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phon no</th>
+			<th>Action</th>
+		</tr>
+		<tr ng-repeat="x in empArrays">
+			<td>{{x.myname}}</td>
+			<td>{{x.email}}</td>
+			<td>{{x.number}}</td>
+			<td><a href="#" ng-click=removeField()>Delete</a>
+			<td><a href="#" ng-click="editField(x.id)"">Edit</a>
+		</tr>
+	</table>
+    
+ </body>
